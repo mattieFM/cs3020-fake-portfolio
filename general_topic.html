@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>General Topic: LINQ</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div id="navbar"></div>
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
+
+  <div class="container mt-5">
+    <h1>General Topic: LINQ (Language Integrated Query)</h1>
+    <p>LINQ is a powerful feature of C#. It simplifies working with data by enabling queries directly in the language. It is similarly structured to sql, here's an overview:</p>
+    <h3>Key Features of LINQ</h3>
+    <ul>
+      <li>Unified query syntax for collections, databases, XML, and more.</li>
+      <li>Strongly-typed queries with compile-time checking.</li>
+      <li>Ease of use and readability compared to traditional loops.</li>
+    </ul>
+    <h3>Example LINQ Query</h3>
+    <pre>
+      <code>
+using System;
+using System.Linq;
+
+class Program {
+    static void Main() {
+        int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        var evenNumbers = numbers.Where(n => n % 2 == 0);
+
+        Console.WriteLine("Even Numbers:");
+        foreach (var num in evenNumbers) {
+            Console.WriteLine(num);
+        }
+    }
+}
+      </code>
+    </pre>
+    <p>In this example, LINQ filters even numbers from an array with minimal code.</p>
+  </div>
+
+  <div id="footer"></div>
+</body>
+</html>
