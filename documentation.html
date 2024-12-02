@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Documentation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riot Games API Wrapper Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        section {
+            margin: 20px;
+        }
+        h2 {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        code {
+            color: #d6336c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Riot Games API UI Wrapper Documentation</h1>
+    </header>
+    <section>
+        <h2>Overview</h2>
+        <p>This program provides a C# wrapper for interacting with the Riot Games API. It allows you to fetch summoner data, game status, match history, and more. The application also includes a simple Windows Forms UI to search for summoner information.</p>
+    </section>
+    <section>
+        <h2>Classes</h2>
+
+        <h3>1. <code>Data</code></h3>
+        <p>Handles API interactions and provides methods for fetching and parsing data from Riot Games' endpoints.</p>
+        <ul>
+            <li><strong>Enums:</strong> <code>queue_types</code> - Defines game queue types.</li>
+            <li><strong>Methods:</strong>
+                <ul>
+                    <li><code>GenericRequestToAPI</code> - Sends a generic API request.</li>
+                    <li><code>GetSummonerPuuidByNameAndTaglineJobj</code> - Fetches a summoner's PUUID using their name and tagline.</li>
+                    <li><code>GetSummonerAccountFromPuuid</code> - Fetches account details using a PUUID.</li>
+                    <li><code>GetSummonerPuuidByNameAndTagline</code> - Retrieves PUUID as a string.</li>
+                    <li><code>GetSummonerDataFromPuuid</code> - Fetches detailed summoner data using a PUUID.</li>
+                    <li><code>GetLolStatus</code> - Gets the current game server status.</li>
+                    <li><code>GetQueueEntiresFromSummonerId</code> - Retrieves queue entries for a summoner by their ID.</li>
+                    <li><code>GetMatchIdsByPuuid</code> - Retrieves match IDs for a summoner using their PUUID.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>2. <code>CoolStuff</code></h3>
+        <p>Acts as a controller for the program, connecting the API logic in <code>Data</code> with the user interface in <code>Form1</code>.</p>
+        <ul>
+            <li><strong>Methods:</strong>
+                <ul>
+                    <li><code>test</code> - A test function to demonstrate API calls.</li>
+                    <li><code>getSummonerData</code> - Fetches summoner data and opens the Summoner Information page.</li>
+                    <li><code>Get_API_Key</code> - Retrieves the API key from the form.</li>
+                    <li><code>setTempLabel</code> - Updates a temporary label on the UI.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>3. <code>Form1</code></h3>
+        <p>The main form of the application. Includes text fields and buttons for user interaction.</p>
+        <ul>
+            <li><strong>Methods:</strong>
+                <ul>
+                    <li><code>getTempLabel</code> - Returns the temporary label for displaying test data.</li>
+                    <li><code>getInputtedName</code> - Retrieves the summoner name input from the UI.</li>
+                    <li><code>getInputtedTag</code> - Retrieves the tagline input from the UI.</li>
+                    <li><code>Get_API_Key</code> - Retrieves the API key input from the UI.</li>
+                    <li><code>button1_Click</code> - Handles the search button click event.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>4. <code>SummonerDataPage</code></h3>
+        <p>Displays detailed summoner data, including level, name, and additional stats. Acts as a child form in the main application.</p>
+        <ul>
+            <li><strong>UI Components:</strong> 
+                <ul>
+                    <li><code>textBox1</code> - Displays the summoner name.</li>
+                    <li><code>textBox3</code> - Displays the summoner's tagline.</li>
+                    <li><code>textBox4</code> - Displays additional details (e.g., level).</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <h2>Usage</h2>
+        <p>To use this program:</p>
+        <ol>
+            <li>Input the summoner name and tagline in the respective fields.</li>
+            <li>Enter your Riot Games API key.</li>
+            <li>Click the search button to fetch and display summoner data.</li>
+        </ol>
+    </section>
+    <section>
+        <h2>Dependencies</h2>
+        <ul>
+            <li><strong>Newtonsoft.Json</strong> - For parsing JSON responses from the Riot API.</li>
+            <li><strong>System.Net.Http</strong> - For making HTTP requests.</li>
+        </ul>
+    </section>
+    <section>
+        <h1>Other Documentation</h1>
+        <p>This document provides an overview and usage instructions for the classes and forms in the project.</p>
+
+        <hr>
+
+        <h2>1. QueueRankDisplay Class</h2>
+        <p>This partial class defines a form used to display queue rank information for a player.</p>
+        <h3>Key Methods:</h3>
+        <ul>
+        <li><b>InitializeComponent:</b> Sets up the form’s layout and properties.</li>
+        <li><b>Dispose:</b> Releases resources used by the form.</li>
+        </ul>
+        <h3>Usage:</h3>
+        <pre>
+        <code>
+    QueueRankDisplay queueRankDisplay = new QueueRankDisplay(queueData);
+    queueRankDisplay.AddThisPageAsDirectChild(parentForm, x, y);
+        </code>
+        </pre>
+
+        <hr>
+
+        <h2>2. SummonerDataPage Class</h2>
+        <p>A form designed to display summoner data retrieved from the League of Legends API.</p>
+        <h3>Key Methods:</h3>
+        <ul>
+        <li><b>SummonerDataPage(string puuid, Data data):</b> Constructor initializing the page with player data.</li>
+        <li><b>SetUpPage:</b> An asynchronous method to fetch and display summoner information.</li>
+        <li><b>GetSummonerNameBox:</b> Retrieves the TextBox containing the summoner’s name.</li>
+        <li><b>GetSummonerLvlBox:</b> Retrieves the TextBox displaying the summoner’s level.</li>
+        </ul>
+        <h3>Usage:</h3>
+        <pre>
+        <code>
+    SummonerDataPage summonerPage = new SummonerDataPage(puuid, data);
+    summonerPage.Show();
+        </code>
+        </pre>
+
+        <hr>
+
+        <h2>3. ChildForm Class</h2>
+        <p>This helper class extends `Form` to provide additional functionality for embedding forms as children of other forms.</p>
+        <h3>Key Methods:</h3>
+        <ul>
+        <li><b>AddThisPageAsMdiChild:</b> Embeds the form as an MDI (Multiple Document Interface) child.</li>
+        <li><b>AddThisPageAsDirectChild:</b> Embeds the form as a child form within a panel in the parent form.</li>
+        <li><b>AddThisPageAsDialog:</b> Displays the form as a modal dialog.</li>
+        </ul>
+        <h3>Usage:</h3>
+        <pre>
+        <code>
+    ChildForm childForm = new ChildForm();
+    childForm.AddThisPageAsDirectChild(parentForm, x, y);
+        </code>
+        </pre>
+        <p><b>Note:</b> Ensure the parent form has a panel to host child forms when using <code>AddThisPageAsDirectChild</code>.</p>
+
+        <hr>
+
+        <h2>4. BorderPanel Class</h2>
+        <p>A custom panel with a configurable border color and width.</p>
+        <h3>Key Properties:</h3>
+        <ul>
+        <li><b>BorderColor:</b> Defines the color of the border (default: black).</li>
+        <li><b>BorderWidth:</b> Specifies the width of the border (default: 2).</li>
+        </ul>
+        <h3>Key Method:</h3>
+        <ul>
+        <li><b>OnPaint:</b> Overrides the default paint behavior to draw a border around the panel.</li>
+        </ul>
+        <h3>Usage:</h3>
+        <pre>
+        <code>
+    BorderPanel borderPanel = new BorderPanel
+    {
+        BorderColor = Color.Red,
+        BorderWidth = 3,
+        Dock = DockStyle.Fill
+    };
+    parentForm.Controls.Add(borderPanel);
+        </code>
+        </pre>
+
+        <hr>
+
+        <h2>5. Data Class</h2>
+        <p>A helper class to fetch data from the League of Legends API.</p>
+        <h3>Key Methods:</h3>
+        <ul>
+        <li><b>GetSummonerDataFromPuuid:</b> Retrieves summoner data using a player’s PUUID.</li>
+        <li><b>GetSummonerAccountFromPuuid:</b> Fetches account details from a PUUID.</li>
+        <li><b>GetLolStatus:</b> Returns the current status of League of Legends servers.</li>
+        <li><b>GetQueueEntriesFromSummonerId:</b> Retrieves ranked queue entries for a summoner.</li>
+        </ul>
+        <h3>Usage:</h3>
+        <pre>
+        <code>
+    JObject summonerData = await data.GetSummonerDataFromPuuid(puuid);
+        </code>
+        </pre>
+
+        <hr>
+
+        <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 CS 3020 Project</p>
+        </footer>
+
+    </section>
+</body>
+</html>
+<div id="navbar"></div>
+<script>
+  fetch('navbar.html')
+    .then(response => response.text())
+    .then(data => document.getElementById('navbar').innerHTML = data);
+</script>
+
+
+
+
+    
+
+</html>
